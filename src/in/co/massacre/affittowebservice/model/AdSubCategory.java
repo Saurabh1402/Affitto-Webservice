@@ -16,6 +16,7 @@ public class AdSubCategory implements Serializable {
     private AdCategory adCategoryFK;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.AdSubCategoryContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -35,7 +36,7 @@ public class AdSubCategory implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.AdCategoryContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdSubCategoryContract.AD_CATEGORY_FK,referencedColumnName = AffittoContract.AdCategoryContract.ID_PK)
     public AdCategory getAdCategoryFK() {
         return adCategoryFK;
     }

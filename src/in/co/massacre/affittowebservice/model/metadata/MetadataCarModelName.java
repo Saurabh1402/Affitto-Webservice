@@ -16,6 +16,7 @@ public class MetadataCarModelName implements Serializable {
     private MetadataCarBrandName metadataCarBrandNameFK;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.Metadata_CarModelNameContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -35,7 +36,7 @@ public class MetadataCarModelName implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_CarBrandNameContract.ID_PK)
+    @JoinColumn(name=AffittoContract.Metadata_CarModelNameContract.CAR_BRAND_NAME_FK,referencedColumnName = AffittoContract.Metadata_CarBrandNameContract.ID_PK)
     public MetadataCarBrandName getMetadataCarBrandNameFK() {
         return metadataCarBrandNameFK;
     }

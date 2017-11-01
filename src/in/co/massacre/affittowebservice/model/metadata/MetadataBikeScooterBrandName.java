@@ -16,6 +16,7 @@ public class MetadataBikeScooterBrandName implements Serializable{
     private String title;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.Metadata_BikeScooterBrandNameContract.ID_PK)
     public long get_idPK() {
         return _idPK;

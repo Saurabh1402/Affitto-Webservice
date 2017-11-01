@@ -9,8 +9,12 @@ import java.util.Date;
 /**
  * Created by saurabh on 5/10/17.
  */
+
 @Entity
 @Table(name = AffittoContract.AdvertisementContract.TABLE_NAME)
+@NamedQueries({
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FINDALL_NAME,query = AffittoContract.AdvertisementContract.FINDALL_QUERY)
+})
 public class Advertisement implements Serializable{
     private long _idPK;
     private String title;
@@ -26,6 +30,7 @@ public class Advertisement implements Serializable{
     private AdSubCategory adSubCategoryFK;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.AdvertisementContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -90,7 +95,7 @@ public class Advertisement implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.AdStatusContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdvertisementContract.AD_STATUS_FK,referencedColumnName = AffittoContract.AdStatusContract.ID_PK)
     public AdStatus getStatusFK() {
         return statusFK;
     }
@@ -100,7 +105,7 @@ public class Advertisement implements Serializable{
     }
 
     @ManyToOne
-    @Column(name = AffittoContract.AdContactContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdvertisementContract.CONTACT_FK,referencedColumnName = AffittoContract.AdContactContract.ID_PK)
     public AdContact getContactFK() {
         return contactFK;
     }
@@ -110,7 +115,7 @@ public class Advertisement implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.AdContactContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdvertisementContract.AD_CATEGORY_FK,referencedColumnName = AffittoContract.AdCategoryContract.ID_PK)
     public AdCategory getAdCategoryFK() {
         return adCategoryFK;
     }
@@ -120,7 +125,7 @@ public class Advertisement implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.AdSubCategoryContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdvertisementContract.AD_SUB_CATEGORY_FK,referencedColumnName = AffittoContract.AdSubCategoryContract.ID_PK)
     public AdSubCategory getAdSubCategoryFK() {
         return adSubCategoryFK;
     }
@@ -129,6 +134,7 @@ public class Advertisement implements Serializable{
         this.adSubCategoryFK = adSubCategoryFK;
     }
 
+    @Temporal(TemporalType.DATE)
     @Column(name = AffittoContract.AdvertisementContract.DATE_CREATED)
     public Date getDateCreated() {
         return dateCreated;

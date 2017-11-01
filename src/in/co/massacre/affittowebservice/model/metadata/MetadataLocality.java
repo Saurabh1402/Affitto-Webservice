@@ -16,6 +16,7 @@ public class MetadataLocality implements Serializable{
     private MetadataCity metadataCity;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.Metadata_LocalityContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -36,7 +37,7 @@ public class MetadataLocality implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_CityContract.ID_PK)
+    @JoinColumn(name=AffittoContract.Metadata_LocalityContract.CITY_FK,referencedColumnName = AffittoContract.Metadata_CityContract.ID_PK)
     public MetadataCity getMetadataCity() {
         return metadataCity;
     }

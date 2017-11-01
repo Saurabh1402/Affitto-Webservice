@@ -2,10 +2,7 @@ package in.co.massacre.affittowebservice.model.metadata;
 
 import in.co.massacre.affittowebservice.dbhelper.AffittoContract;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -19,6 +16,7 @@ public class MetadataBikeScooterFuelType implements Serializable {
     private String title;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.Metadata_BikeScooterFuelTypeContract.ID_PK)
     public long get_idPK() {
         return _idPK;

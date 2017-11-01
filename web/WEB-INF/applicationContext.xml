@@ -46,6 +46,7 @@
           p:password="${jdbc.password}"
     />
 
+    <context:component-scan base-package="in.co.massacre.affittowebservice" />
 
     <context:property-placeholder location="META-INF/config/config.properties"/>
 </beans>

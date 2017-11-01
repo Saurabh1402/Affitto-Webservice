@@ -8,6 +8,7 @@ import in.co.massacre.affittowebservice.model.metadata.MetadataColor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by saurabh on 5/10/17.
@@ -16,13 +17,16 @@ import java.io.Serializable;
 @Table(name = AffittoContract.CarContract.TABLE_NAME)
 public class Car implements Serializable{
     private long _idPK;
+    private Advertisement advertisement;
     private long kilometerDriven;
     private int yearOfRegistration;
     private MetadataColor colorFK;
+    private Date insuranceValidity;
     private MetadataCarFuelType carFuelTypFK;
     private MetadataCarBrandName carBrandNameFK;
-    private MetadataCarModelName carModeNameFK;
+    private MetadataCarModelName carModelNameFK;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.CarContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -30,6 +34,16 @@ public class Car implements Serializable{
 
     public void set_idPK(long _idPK) {
         this._idPK = _idPK;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name=AffittoContract.CarContract.ADVERTISEMENT_FK,referencedColumnName = AffittoContract.AdvertisementContract.ID_PK)
+    public Advertisement getAdvertisement() {
+        return advertisement;
+    }
+
+    public void setAdvertisement(Advertisement advertisement) {
+        this.advertisement = advertisement;
     }
 
     @Column(name = AffittoContract.CarContract.KM_DRIVEN)
@@ -50,8 +64,18 @@ public class Car implements Serializable{
         this.yearOfRegistration = yearOfRegistration;
     }
 
+    @Column(name = AffittoContract.CarContract.INSURANCE_VALIDITY)
+    @Temporal(TemporalType.DATE)
+    public Date getInsuranceValidity() {
+        return insuranceValidity;
+    }
+
+    public void setInsuranceValidity(Date insuranceValidity) {
+        this.insuranceValidity = insuranceValidity;
+    }
+
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_ColorContract.ID_PK)
+    @JoinColumn(name=AffittoContract.CarContract.COLOR_FK,referencedColumnName = AffittoContract.Metadata_ColorContract.ID_PK)
     public MetadataColor getColorFK() {
         return colorFK;
     }
@@ -61,7 +85,7 @@ public class Car implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_CarFuelTypeContract.ID_PK)
+    @JoinColumn(name=AffittoContract.CarContract.CAR_FUELTYPE_FK,referencedColumnName = AffittoContract.Metadata_CarFuelTypeContract.ID_PK)
     public MetadataCarFuelType getCarFuelTypFK() {
         return carFuelTypFK;
     }
@@ -71,7 +95,7 @@ public class Car implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_CarBrandNameContract.ID_PK)
+    @JoinColumn(name=AffittoContract.CarContract.CAR_BRANDNAME_FK,referencedColumnName = AffittoContract.Metadata_CarBrandNameContract.ID_PK)
     public MetadataCarBrandName getCarBrandNameFK() {
         return carBrandNameFK;
     }
@@ -81,12 +105,12 @@ public class Car implements Serializable{
     }
 
     @ManyToOne
-    @Column(name = AffittoContract.Metadata_CarModelNameContract.ID_PK)
-    public MetadataCarModelName getCarModeNameFK() {
-        return carModeNameFK;
+    @JoinColumn(name=AffittoContract.CarContract.CAR_MODELNAME_FK,referencedColumnName = AffittoContract.Metadata_CarModelNameContract.ID_PK)
+    public MetadataCarModelName getCarModelNameFK() {
+        return carModelNameFK;
     }
 
-    public void setCarModeNameFK(MetadataCarModelName carModeNameFK) {
-        this.carModeNameFK = carModeNameFK;
+    public void setCarModelNameFK(MetadataCarModelName carModeNameFK) {
+        this.carModelNameFK = carModeNameFK;
     }
 }

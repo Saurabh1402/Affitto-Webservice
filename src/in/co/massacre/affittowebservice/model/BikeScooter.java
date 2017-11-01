@@ -17,11 +17,13 @@ public class BikeScooter implements Serializable {
     private String _idPK;
     private long kilometerDriven;
     private int yearOfRegistration;
+    private Advertisement advertisement;
     private MetadataColor colorFK;
     private MetadataBikeScooterFuelType bikeScooterFuelTypeFK;
     private MetadataBikeScooterBrandName bikeScooterBrandNameFK;
-    private MetadataCarModelName bikeScooterModelNameFK;
+    private MetadataBikeScooterModelName bikeScooterModelNameFK;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.BikeScooterContract.ID_PK)
     public String get_idPK() {
         return _idPK;
@@ -29,6 +31,16 @@ public class BikeScooter implements Serializable {
 
     public void set_idPK(String _idPK) {
         this._idPK = _idPK;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name=AffittoContract.BikeScooterContract.ADVERTISEMENT_FK,referencedColumnName = AffittoContract.AdvertisementContract.ID_PK)
+    public Advertisement getAdvertisement() {
+        return advertisement;
+    }
+
+    public void setAdvertisement(Advertisement advertisement) {
+        this.advertisement = advertisement;
     }
 
     @Column(name = AffittoContract.BikeScooterContract.KM_DRIVEN)
@@ -50,7 +62,7 @@ public class BikeScooter implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_ColorContract.ID_PK)
+    @JoinColumn(name=AffittoContract.BikeScooterContract.COLOR_FK,referencedColumnName = AffittoContract.Metadata_ColorContract.ID_PK)
     public MetadataColor getColorFK() {
         return colorFK;
     }
@@ -60,7 +72,7 @@ public class BikeScooter implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn( name=AffittoContract.Metadata_BikeScooterFuelTypeContract.ID_PK)
+    @JoinColumn( name=AffittoContract.BikeScooterContract.BIKESCOOTER_FUELTYPE_FK,referencedColumnName = AffittoContract.Metadata_BikeScooterFuelTypeContract.ID_PK)
     public MetadataBikeScooterFuelType getBikeScooterFuelTypeFK() {
         return bikeScooterFuelTypeFK;
     }
@@ -70,7 +82,7 @@ public class BikeScooter implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_BikeScooterBrandNameContract.ID_PK)
+    @JoinColumn(name=AffittoContract.BikeScooterContract.BIKESCOOTER_BRANDNAME_FK,referencedColumnName = AffittoContract.Metadata_BikeScooterBrandNameContract.ID_PK)
     public MetadataBikeScooterBrandName getBikeScooterBrandNameFK() {
         return bikeScooterBrandNameFK;
     }
@@ -80,12 +92,12 @@ public class BikeScooter implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_BikeScooterModelNameContract.ID_PK)
-    public MetadataCarModelName getBikeScooterModelNameFK() {
+    @JoinColumn(name=AffittoContract.BikeScooterContract.BIKESCOOTER_MODELNAME_FK,referencedColumnName = AffittoContract.Metadata_BikeScooterModelNameContract.ID_PK)
+    public MetadataBikeScooterModelName getBikeScooterModelNameFK() {
         return bikeScooterModelNameFK;
     }
 
-    public void setBikeScooterModelNameFK(MetadataCarModelName bikeScooterModelNameFK) {
+    public void setBikeScooterModelNameFK(MetadataBikeScooterModelName bikeScooterModelNameFK) {
         this.bikeScooterModelNameFK = bikeScooterModelNameFK;
     }
 }

@@ -2,10 +2,7 @@ package in.co.massacre.affittowebservice.model;
 
 import in.co.massacre.affittowebservice.dbhelper.AffittoContract;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -18,6 +15,7 @@ public class AdStatus implements Serializable {
     private String title;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.AdStatusContract.ID_PK)
     public long getIdPK() {
         return idPK;

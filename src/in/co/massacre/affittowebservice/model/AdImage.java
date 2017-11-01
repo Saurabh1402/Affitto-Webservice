@@ -15,6 +15,7 @@ public class AdImage implements Serializable {
     private String title;
     private Advertisement advertisementFK;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.AdImageContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -34,7 +35,7 @@ public class AdImage implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.AdvertisementContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdImageContract.ADVERTISEMENT_FK,referencedColumnName = AffittoContract.AdvertisementContract.ID_PK)
     public Advertisement getAdvertisementFK() {
         return advertisementFK;
     }

@@ -28,6 +28,7 @@ public class AdContact implements Serializable{
     private MetadataPincode adPincodeFK;
     private String profilephoto;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.AdContactContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -74,6 +75,7 @@ public class AdContact implements Serializable{
         this.privacy = privacy;
     }
 
+    @Temporal(TemporalType.DATE)
     @Column(name = AffittoContract.AdContactContract.DATE_CREATED)
     public Date getDateCreated() {
         return dateCreated;
@@ -93,7 +95,7 @@ public class AdContact implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_LocalityContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_LOCALIY_FK,referencedColumnName = AffittoContract.Metadata_LocalityContract.ID_PK)
     public MetadataLocality getMetadataLocalityFK() {
         return metadataLocalityFK;
     }
@@ -103,7 +105,7 @@ public class AdContact implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_CityContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_CITY_FK,referencedColumnName = AffittoContract.Metadata_CityContract.ID_PK)
     public MetadataCity getAdCityFK() {
         return adCityFK;
     }
@@ -113,7 +115,7 @@ public class AdContact implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_StateContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_STATE_FK,referencedColumnName = AffittoContract.Metadata_StateContract.ID_PK)
     public MetadataState getAdStateFK() {
         return adStateFK;
     }
@@ -123,7 +125,7 @@ public class AdContact implements Serializable{
     }
 
     @ManyToOne
-    @Column(name = AffittoContract.Metadata_PincodeContract.ID_PK)
+    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_PINCODE_FK,referencedColumnName = AffittoContract.Metadata_PincodeContract.ID_PK)
     public MetadataPincode getAdPincodeFK() {
         return adPincodeFK;
     }

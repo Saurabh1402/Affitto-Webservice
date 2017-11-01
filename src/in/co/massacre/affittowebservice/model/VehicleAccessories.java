@@ -13,9 +13,11 @@ import java.io.Serializable;
 @Table(name = AffittoContract.VehicleAccessoriesContract.TABLE_NAME)
 public class VehicleAccessories implements Serializable{
     private long _idPK;
+    private Advertisement advertisement;
     private String title;
     private MetadataVehicleAccessoriesType metadataVehicleAccessoriesTypeFK;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.VehicleAccessoriesContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -23,6 +25,16 @@ public class VehicleAccessories implements Serializable{
 
     public void set_idPK(long _idPK) {
         this._idPK = _idPK;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name=AffittoContract.VehicleAccessoriesContract.ADVERTISEMENT_FK,referencedColumnName = AffittoContract.AdvertisementContract.ID_PK)
+    public Advertisement getAdvertisement() {
+        return advertisement;
+    }
+
+    public void setAdvertisement(Advertisement advertisement) {
+        this.advertisement = advertisement;
     }
 
     @Column(name = AffittoContract.VehicleAccessoriesContract.TITLE)
@@ -35,7 +47,7 @@ public class VehicleAccessories implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_VehicleAccessoriesTypeContract.ID_PK)
+    @JoinColumn(name=AffittoContract.VehicleAccessoriesContract.VehicleAccessoriesTypeFK,referencedColumnName = AffittoContract.Metadata_VehicleAccessoriesTypeContract.ID_PK)
     public MetadataVehicleAccessoriesType getMetadataVehicleAccessoriesTypeFK() {
         return metadataVehicleAccessoriesTypeFK;
     }

@@ -16,6 +16,7 @@ public class MetadataPincode implements Serializable{
     private MetadataLocality metadataLocalityFK;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.Metadata_PincodeContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -35,7 +36,7 @@ public class MetadataPincode implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_LocalityContract.ID_PK)
+    @JoinColumn(name=AffittoContract.Metadata_PincodeContract.LOCALITY_FK,referencedColumnName = AffittoContract.Metadata_LocalityContract.ID_PK)
     public MetadataLocality getMetadataLocalityFK() {
         return metadataLocalityFK;
     }

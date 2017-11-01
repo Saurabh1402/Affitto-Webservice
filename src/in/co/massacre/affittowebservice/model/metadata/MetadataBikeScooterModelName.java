@@ -16,6 +16,7 @@ public class MetadataBikeScooterModelName implements Serializable{
     private MetadataBikeScooterBrandName bikeScooterBrandNameFK;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.Metadata_BikeScooterModelNameContract.ID_PK)
     public long get_idPK() {
         return _idPK;
@@ -34,7 +35,7 @@ public class MetadataBikeScooterModelName implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = AffittoContract.Metadata_BikeScooterBrandNameContract.ID_PK)
+    @JoinColumn(name=AffittoContract.Metadata_BikeScooterModelNameContract.BIKESCOOTER_BRANDNAME_FK,referencedColumnName = AffittoContract.Metadata_BikeScooterBrandNameContract.ID_PK)
     public MetadataBikeScooterBrandName getBikeScooterBrandNameFK() {
         return bikeScooterBrandNameFK;
     }
