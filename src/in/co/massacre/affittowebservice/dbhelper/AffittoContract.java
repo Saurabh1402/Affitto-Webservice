@@ -45,17 +45,30 @@ public class AffittoContract {
         public static final String TABLE_NAME="METADATA_CAR_BRANDNAME";
         public static final String ID_PK="car_brandname_id_pk";
         public static final String TITLE="title";
+
+
+        //QUERY
+        public static final String FINDALL_NAME="MetadataCarBrandName.findAll",
+                FINDALL_QUERY="select b from MetadataCarBrandName b";
     }
     public static class Metadata_CarModelNameContract{
         public static final String TABLE_NAME="METADATA_CAR_MODELNAME";
         public static final String ID_PK="car_modelname_id_pk";
         public static final String TITLE="title";
         public static final String CAR_BRAND_NAME_FK="car_brandname_fk";
+
+        //QUERY
+        public static final String FINDALL_NAME="MetadataCarModel.findAll",
+                FINDALL_QUERY="select b from MetadataCarModelName b";
     }
     public static class Metadata_CarFuelTypeContract{
         public static final String TABLE_NAME="METADATA_CAR_FUELTYPE";
         public static final String ID_PK="car_fueltype_id_pk";
         public static final String TITLE="title";
+
+        //QUERY
+        public static final String FINDALL_NAME="MetadataCarFuelType.findAll",
+                FINDALL_QUERY="select b from MetadataCarFuelType b";
     }
 
     // BIKE AND SCOOTER TYPE
@@ -141,23 +154,42 @@ public class AffittoContract {
         public static final String ID_PK="adimage_id_pk";
         public static final String TITLE="title";
         public static final String ADVERTISEMENT_FK="advertisement_fk";
+
+        //QUERY
+        public static final String FINDALL_NAME="AdImage.findAll",
+                FINDALL_QUERY="select b from AdImage b";
+        public static final String FINDBYADVERTISEMENT_NAME="AdImage.findByAdvertisement",
+                FINDBYADVERTISEMENT_QUERY="select b from AdImage b where b.advertisement_fk=:advertisement_fk";
+
     }
     public static class AdCategoryContract{
         public static final String TABLE_NAME="AD_CATEGORY";
         public static final String ID_PK="adcategory_id_pk";
         public static final String TITLE="title";
         public static final String ICON_RESOURCE="icon_resource";
+
+        //QUERY
+        public static final String FINDALL_NAME="AdCategory.findAll",
+                FINDALL_QUERY="select b from AdCategory b";
     }
     public static class AdSubCategoryContract{
         public static final String TABLE_NAME="AD_SUBCATEGORY";
         public static final String ID_PK="adsubcategory_id_pk";
         public static final String TITLE="title";
         public static final String AD_CATEGORY_FK="ad_category_fk";
+
+        //QUERY
+        public static final String FINDALL_NAME="AdSubCategory.findAll",
+                FINDALL_QUERY="select b from AdSubCategory b";
     }
     public static class Metadata_StateContract{
         public static final String TABLE_NAME="METADATA_STATUS";
         public static final String ID_PK="adsubcategory_id_pk";
         public static final String TITLE="title";
+
+        //QUERY
+        public static final String FINDALL_NAME="MetadataState.findAll",
+                FINDALL_QUERY="select b from MetadataState b";
     }
 
     public static class Metadata_CityContract{
@@ -165,6 +197,14 @@ public class AffittoContract {
         public static final String ID_PK="city_id_pk";
         public static final String TITLE="title";
         public static final String STATE_FK="state_fk";
+
+        //QUERY
+        public static final String FINDALL_NAME="MetadataCity.findAll",
+                FINDALL_QUERY="select b from MetadataCity b";
+
+        public static final String FINDBYSTATE_NAME="MetadataCity.findByState",
+                FINDBYSTATE_QUERY="select b from MetadataCity b where b.state_fk=:state_fk";
+
     }
     public static class Metadata_LocalityContract{
         public static final String TABLE_NAME="METADATA_LOCALITY";

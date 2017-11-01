@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class AdCategory implements Serializable{
     private long _idPK;
     private String title;
+    private String iconResource;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,5 +33,14 @@ public class AdCategory implements Serializable{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Column(name = AffittoContract.AdCategoryContract.ICON_RESOURCE)
+    public String getIconResource() {
+        return iconResource;
+    }
+
+    public void setIconResource(String iconResource) {
+        this.iconResource = iconResource;
     }
 }
