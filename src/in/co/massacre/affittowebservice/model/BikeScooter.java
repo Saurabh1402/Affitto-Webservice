@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = AffittoContract.BikeScooterContract.TABLE_NAME)
 public class BikeScooter implements Serializable {
-    private String _idPK;
+    private long _idPK;
     private long kilometerDriven;
     private int yearOfRegistration;
     private Advertisement advertisement;
@@ -25,11 +25,11 @@ public class BikeScooter implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.BikeScooterContract.ID_PK)
-    public String get_idPK() {
+    public long get_idPK() {
         return _idPK;
     }
 
-    public void set_idPK(String _idPK) {
+    public void set_idPK(long _idPK) {
         this._idPK = _idPK;
     }
 

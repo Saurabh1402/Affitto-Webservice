@@ -31,7 +31,8 @@ public class AdCategoryServiceImpl implements AdCategoryService {
     }
 
     @Override
-    public AdCategory findById(long adCategoryId) {
+    public AdCategory findByAdCategoryId(long adCategoryId) {
         return null;
     }
+
 }

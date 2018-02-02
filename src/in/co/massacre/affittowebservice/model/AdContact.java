@@ -22,11 +22,10 @@ public class AdContact implements Serializable{
     private String mobile;
     private String privacy;
     private Date dateCreated;
-    private MetadataLocality metadataLocalityFK;
-    private MetadataCity adCityFK;
-    private MetadataState adStateFK;
-    private MetadataPincode adPincodeFK;
     private String profilephoto;
+    private Boolean mobileVerified;
+    private Boolean emailVerified;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = AffittoContract.AdContactContract.ID_PK)
@@ -94,44 +93,23 @@ public class AdContact implements Serializable{
         this.profilephoto = profilephoto;
     }
 
-    @ManyToOne
-    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_LOCALIY_FK,referencedColumnName = AffittoContract.Metadata_LocalityContract.ID_PK)
-    public MetadataLocality getMetadataLocalityFK() {
-        return metadataLocalityFK;
+    @Column(name = AffittoContract.AdContactContract.MOBILE_VERIFIED)
+    public Boolean getMobileVerified() {
+        return mobileVerified;
     }
 
-    public void setMetadataLocalityFK(MetadataLocality metadataLocalityFK) {
-        this.metadataLocalityFK = metadataLocalityFK;
+    public void setMobileVerified(Boolean mobileVerified) {
+        this.mobileVerified = mobileVerified;
     }
 
-    @ManyToOne
-    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_CITY_FK,referencedColumnName = AffittoContract.Metadata_CityContract.ID_PK)
-    public MetadataCity getAdCityFK() {
-        return adCityFK;
+    @Column(name = AffittoContract.AdContactContract.EMAIL_VERIFIED)
+    public Boolean getEmailVerified() {
+        return emailVerified;
     }
 
-    public void setAdCityFK(MetadataCity adCItyFK) {
-        this.adCityFK = adCItyFK;
+    public void setEmailVerified(Boolean emailVerified) {
+        this.emailVerified = emailVerified;
     }
 
-    @ManyToOne
-    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_STATE_FK,referencedColumnName = AffittoContract.Metadata_StateContract.ID_PK)
-    public MetadataState getAdStateFK() {
-        return adStateFK;
-    }
-
-    public void setAdStateFK(MetadataState adStateFK) {
-        this.adStateFK = adStateFK;
-    }
-
-    @ManyToOne
-    @JoinColumn(name=AffittoContract.AdContactContract.METADATA_PINCODE_FK,referencedColumnName = AffittoContract.Metadata_PincodeContract.ID_PK)
-    public MetadataPincode getAdPincodeFK() {
-        return adPincodeFK;
-    }
-
-    public void setAdPincodeFK(MetadataPincode adPincodeFK) {
-        this.adPincodeFK = adPincodeFK;
-    }
 
 }

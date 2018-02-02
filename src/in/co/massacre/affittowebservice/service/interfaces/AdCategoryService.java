@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface AdCategoryService {
     List<AdCategory> findAll();
-    AdCategory findById(long adCategoryId);
+    AdCategory findByAdCategoryId(long adCategoryId);
 }

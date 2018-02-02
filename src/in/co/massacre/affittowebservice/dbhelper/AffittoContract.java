@@ -16,17 +16,45 @@ public class AffittoContract {
         public static final String LONGITUDE="longitude";
         public static final String LATITUDE="latitude";
         public static final String AD_STATUS_FK="ad_status_fk";
+        public static final String METADATA_LOCALIY_FK="metadata_locality_fk";
+        public static final String METADATA_CITY_FK="metadata_city_fk";
+        public static final String METADATA_STATE_FK="metadata_state_fk";
+        public static final String METADATA_PINCODE_FK="metadata_pincode_fk";
         public static final String CONTACT_FK="contact_fk";
         public static final String AD_CATEGORY_FK="ad_category_fk";
         public static final String AD_SUB_CATEGORY_FK="ad_sub_category_fk";
 
         //QUERY
-        public static final String FINDALL_NAME="Advertisement.findAll",
-                FINDALL_QUERY="select a from Advertisement a";
-        public static final String FINDBYID_NAME="Advertisement.findById",
-                FIND_BY_ID_QUERY="select a from Advertisement where a.advertisement_id_pk=:id";
-        //public static final String FINDBY
+        public static final String FIND_ALL_KEY ="Advertisement.findAll",
+                FIND_ALL_QUERY ="select a from Advertisement a";
+        public static final String FIND_BY_ID_KEY ="Advertisement.findById",
+                FIND_BY_ID_QUERY ="select a from Advertisement a where a._idPK=:id",
+                FIND_BY_ID_PARAMETER_ID="id";
+        public static final String FIND_BY_CITY_KEY="Advertisement.findByCity",
+                FIND_BY_CITY_QUERY="select a from Advertisement a where a.adCityFK=:city",
+                FIND_BY_CITY_PARAMETER_CITY="city";
+        public static final String FIND_BY_STATE_KEY ="Advertisement.findByState",
+                FIND_BY_STATE_QUERY="select a from Advertisement a where a.adStateFK=:state",
+                FIND_BY_STATE_PARAMETER_STATE="state";
+        public static final String FIND_BY_LOCALITY_KEY ="Advertisement.findByLocality",
+                FIND_BY_LOCALITY_QUERY="select a from Advertisement a where a.adLocalityFK=:locality",
+                FIND_BY_LOCALITY_PARAMETER_LOCALITY="locality";
+        public static final String FIND_BY_PINCODE_KEY ="Advertisement.findByPincode",
+                FIND_BY_PINCODE_QUERY="select a from Advertisement a where a.adPincodeFK=:pincode",
+                FIND_BY_PINCODE_PARAMETER_PINCODE="pincode";
+        public static final String FIND_BY_CONTACT_KEY ="Advertisement.findByContact",
+                FIND_BY_CONTACT_QUERY="select a from Advertisement a where a.contactFK=:contact",
+                FIND_BY_CONTACT_PARAMETER_CONTACT="contact";
+        public static final String FIND_BY_CATEGORY_KEY ="Advertisement.findByCategory",
+                FIND_BY_CATEGORY_QUERY="select a from Advertisement a where a.adCategoryFK=:category",
+                FIND_BY_CATEGORY_PARAMETER_CATEGORY="category";
+        public static final String FIND_BY_SUBCATEGORY_KEY ="Advertisement.findBySubCategory",
+                FIND_BY_SUBCATEGORY_QUERY="select a from Advertisement a where a.adSubCategoryFK=:subcategory",
+                FIND_BY_SUBCATEGORY_PARAMETER_SUBCATEGORY="subcategory";
+
+
     }
+
 
     // CAR ADVERTISEMENT TYPE
     public static class CarContract{
@@ -40,6 +68,25 @@ public class AffittoContract {
         public static final String CAR_FUELTYPE_FK="car_fueltype_fk";
         public static final String CAR_BRANDNAME_FK="car_brandname_fk";
         public static final String CAR_MODELNAME_FK="car_modelname_fk";
+
+        //QUERY
+        public static final String FIND_ALL_KEY="Car.findAll",
+                FIND_ALL_QUERY="select c from Car c";
+
+        public static final String FIND_BY_BRANDNAME_KEY="Car.findByBrandName",
+                FIND_BY_BRANDNAME_QUERY="select c from Car where c.carBrandNameFK=:carBrandName",
+                FIND_BY_BRANDNAME_PARAMETER_CARBRANDNAME="carBrandName";
+
+        public static final String FIND_BY_MODELNAME_KEY="Car.findByModelName",
+                FIND_BY_MODELNAME_QUERY="select c from Car where c.carModelNameFK=:carModelName",
+                FIND_BY_MODELNAME_PARAMETER_CARMODELNAME="carModelName";
+        public static final String FIND_BY_COLOR_KEY="Car.findByModelName",
+                FIND_BY_MODELNAME_QUERY="select c from Car where c.carModelNameFK=:carModelName",
+                FIND_BY_MODELNAME_PARAMETER_CARMODELNAME="carModelName";
+
+
+
+
     }
     public static class Metadata_CarBrandNameContract{
         public static final String TABLE_NAME="METADATA_CAR_BRANDNAME";
@@ -235,14 +282,12 @@ public class AffittoContract {
         public static final String ID_PK="adcontact_id_pk";
         public static final String NAME="name";
         public static final String EMAIL="email";
+        public static final String EMAIL_VERIFIED="email_verified";
         public static final String MOBILE="mobile";
+        public static final String MOBILE_VERIFIED="mobile_verified";
         public static final String PRIVACY="privacy";
         public static final String DATE_CREATED="date_created";
         public static final String PROFILE_PHOTO_FK="profile_photo_fk";
-        public static final String METADATA_LOCALIY_FK="metadata_locality_fk";
-        public static final String METADATA_CITY_FK="metadata_city_fk";
-        public static final String METADATA_STATE_FK="metadata_state_fk";
-        public static final String METADATA_PINCODE_FK="metadata_pincode_fk";
 
     }
 }

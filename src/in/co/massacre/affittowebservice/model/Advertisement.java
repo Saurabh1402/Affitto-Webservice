@@ -1,6 +1,10 @@
 package in.co.massacre.affittowebservice.model;
 
 import in.co.massacre.affittowebservice.dbhelper.AffittoContract;
+import in.co.massacre.affittowebservice.model.metadata.MetadataCity;
+import in.co.massacre.affittowebservice.model.metadata.MetadataLocality;
+import in.co.massacre.affittowebservice.model.metadata.MetadataPincode;
+import in.co.massacre.affittowebservice.model.metadata.MetadataState;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +17,15 @@ import java.util.Date;
 @Entity
 @Table(name = AffittoContract.AdvertisementContract.TABLE_NAME)
 @NamedQueries({
-        @NamedQuery(name = AffittoContract.AdvertisementContract.FINDALL_NAME,query = AffittoContract.AdvertisementContract.FINDALL_QUERY)
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_ALL_KEY,query = AffittoContract.AdvertisementContract.FIND_ALL_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_ID_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_ID_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_CITY_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_CITY_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_STATE_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_STATE_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_LOCALITY_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_LOCALITY_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_PINCODE_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_PINCODE_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_CONTACT_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_CONTACT_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_CATEGORY_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_CATEGORY_QUERY),
+        @NamedQuery(name = AffittoContract.AdvertisementContract.FIND_BY_SUBCATEGORY_KEY,query = AffittoContract.AdvertisementContract.FIND_BY_SUBCATEGORY_QUERY)
 })
 public class Advertisement implements Serializable{
     private long _idPK;
@@ -25,6 +37,10 @@ public class Advertisement implements Serializable{
     private double LONGITUDE;
     private double LATITUDE;
     private AdStatus statusFK;
+    private MetadataLocality adLocalityFK;
+    private MetadataCity adCityFK;
+    private MetadataState adStateFK;
+    private MetadataPincode adPincodeFK;
     private AdContact contactFK;
     private AdCategory adCategoryFK;
     private AdSubCategory adSubCategoryFK;
@@ -143,4 +159,45 @@ public class Advertisement implements Serializable{
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
+
+    @ManyToOne
+    @JoinColumn(name=AffittoContract.AdvertisementContract.METADATA_LOCALIY_FK,referencedColumnName = AffittoContract.Metadata_LocalityContract.ID_PK)
+    public MetadataLocality getAdLocalityFK() {
+        return adLocalityFK;
+    }
+
+    public void setAdLocalityFK(MetadataLocality metadataLocalityFK) {
+        this.adLocalityFK = metadataLocalityFK;
+    }
+
+    @ManyToOne
+    @JoinColumn(name=AffittoContract.AdvertisementContract.METADATA_CITY_FK,referencedColumnName = AffittoContract.Metadata_CityContract.ID_PK)
+    public MetadataCity getAdCityFK() {
+        return adCityFK;
+    }
+
+    public void setAdCityFK(MetadataCity adCItyFK) {
+        this.adCityFK = adCItyFK;
+    }
+
+    @ManyToOne
+    @JoinColumn(name=AffittoContract.AdvertisementContract.METADATA_STATE_FK,referencedColumnName = AffittoContract.Metadata_StateContract.ID_PK)
+    public MetadataState getAdStateFK() {
+        return adStateFK;
+    }
+
+    public void setAdStateFK(MetadataState adStateFK) {
+        this.adStateFK = adStateFK;
+    }
+
+    @ManyToOne
+    @JoinColumn(name=AffittoContract.AdvertisementContract.METADATA_PINCODE_FK,referencedColumnName = AffittoContract.Metadata_PincodeContract.ID_PK)
+    public MetadataPincode getAdPincodeFK() {
+        return adPincodeFK;
+    }
+
+    public void setAdPincodeFK(MetadataPincode adPincodeFK) {
+        this.adPincodeFK = adPincodeFK;
+    }
+
 }
