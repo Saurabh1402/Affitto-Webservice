@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="affittowebservices@localhost" uuid="9c90d6b1-e76b-4c45-82e2-868d6ca7c3f8">
+      <database-info product="PostgreSQL" version="9.3.10" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>saurabh04051961</user-name>
+      <introspection-schemas>affittowebservices:affitto,public</introspection-schemas>
+    </data-source>
+  </component>
+</project>
